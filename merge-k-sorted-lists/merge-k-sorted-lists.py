@@ -8,15 +8,18 @@ class ListNode:
         self.val = val
         self.next = next
 class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
-        docking = []
-        for i in lists:
-            for j in i:
-                docking.append(j)
+    def __init__(self):
+        self.head = ListNode(None)
 
-        docking.sort()
-        return docking
+    def mergeKLists(self, lists) :
+        tmp = self.head.next
+        while tmp:
+            print(tmp.val)
+            tmp = tmp.next
 
 if __name__ == '__main__':
-    l = Solution.mergeKLists("",[[1,4,5],[1,3,4],[2,6]])
-    print(l)
+    s = Solution()
+    l = ListNode
+    l = [[1,4,5],[1,3,4],[2,6]]
+
+    print(s.mergeKLists(l))
