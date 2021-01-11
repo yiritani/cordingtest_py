@@ -16,4 +16,4 @@ class Solution:
         return (not len(st) > 0)
 
 if __name__ == '__main__':
-    print(Solution.isValid("", "()"))
+    print(Solution.isValid("", "([)]"))

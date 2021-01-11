@@ -1,5 +1,6 @@
 import hashlib
 from typing import Any
+from collections import deque
 
 
 class HashTable(object):
@@ -41,8 +42,25 @@ class HashTable(object):
     def __getitem__(self, key) -> Any:
         return self.get(key)
 
+
+def reverse(queue) -> deque:
+    r = deque()
+    while queue:
+        r.append(queue.pop())
+        # print(queue.pop())
+    [queue.append(d) for d in r]
+    # return r
+
 if __name__ == '__main__':
-    hash_table = HashTable()
-    hash_table['car'] = 'tesla'
-    # print(hash_table.table)
-    print(hash_table['car'])
+    # hash_table = HashTable()
+    # hash_table['car'] = 'tesla'
+    # # print(hash_table.table)
+    # print(hash_table['car'])
+
+    q = deque()
+    q.append(1)
+    q.append(2)
+    q.append(3)
+    q.append(4)
+    reverse(q)
+    print(q)
