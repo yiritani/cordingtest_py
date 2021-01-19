@@ -22,5 +22,5 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    digits = [9,9]
+    digits = [0,9,9]
     print(s.plusOne(digits))

@@ -1,49 +1,36 @@
-from typing import Any
-class Node(object):
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
+from typing import List
+
+def snake_string_v1(nums: str)-> List[List[str]]:
+    result = [[],[],[]]
+    result_index = {0,1,2}
+    insert_index = 1
+    for i, s in enumerate(nums):
+        if i % 4 == 1:
+            insert_index = 0
+        elif i % 2 == 0:
+            insert_index = 1
+        elif i % 4 == 3:
+            insert_index = 2
+
+        result[result_index].append(s)
+        for rest_index in rest_index - {insert_index}:
+            result[rest_index].append(' ')
+
+    return result
 
 
 
-def insert(node: Node, value: int) -> Node:
-    if node is None:
-        return Node(value)
-
-    if value < node.value:
-        node.left = insert(node.left, value)
-    else:
-        node.right = insert(node.right, value)
-
-    return node
-
-def inorder(node: Node) -> None:
-    if node is not None:
-        inorder(node.left)
-        print(node.value)
-        inorder(node.right)
 
 
-def search(node: None, value: Any) -> bool:
-    if node is None:
-        return False
 
-    if node.value == value:
-        return True
-    elif node.value > value:
-        return search(node.left, value)
-    elif node.value < value:
-        return search(node.right, value)
+
+
 
 
 if __name__ == '__main__':
-    root = None
-    root = insert(root, 3)
-    root = insert(root, 6)
-    root = insert(root, 5)
-    root = insert(root, 7)
-    root = insert(root, 1)
-    root = insert(root, 10)
-    root = insert(root, 2)
-    print(search(root, 1))
+
+    numbers = [str(i) for j in range(5) for i in range(10)]
+    strings = ''.join(numbers)
+    for line in snake_string_v1(strings):
+        print(''.join(line))
+
