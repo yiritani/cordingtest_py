@@ -1,36 +1,30 @@
-from typing import List
+from collections import defaultdict
+from typing import Tuple, List
 
-def snake_string_v1(nums: str)-> List[List[str]]:
-    result = [[],[],[]]
-    result_index = {0,1,2}
-    insert_index = 1
-    for i, s in enumerate(nums):
-        if i % 4 == 1:
-            insert_index = 0
-        elif i % 2 == 0:
-            insert_index = 1
-        elif i % 4 == 3:
-            insert_index = 2
 
-        result[result_index].append(s)
-        for rest_index in rest_index - {insert_index}:
-            result[rest_index].append(' ')
+def taxi_cab_number(max_answer_num: int, match_answer_num: int = 2, start_answer: int = 1) -> List[
+    Tuple[int, List[Tuple[int, int]]]]:
+    result = []
+    got_answer_count = 0
+    answer = 1
 
+    while got_answer_count < max_answer_num:
+        match_answer_count = 0
+        memo = defaultdict(list)
+
+        max_param = int(pow(answer, 1.0/3)) + 1
+        for x in range(1, max_param):
+            for y in range(x + 1, max_param):
+                if x ** 3 + y ** 3 == answer:
+                    match_answer_count += 1
+                    memo[answer].append((x, y))
+
+        if match_answer_count == match_answer_num:
+            result.append((answer, memo[answer]))
+            got_answer_count += 1
+
+        answer += 1
     return result
 
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
-
-    numbers = [str(i) for j in range(5) for i in range(10)]
-    strings = ''.join(numbers)
-    for line in snake_string_v1(strings):
-        print(''.join(line))
-
+    print(taxi_cab_number(1, 2))
