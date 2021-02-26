@@ -12,8 +12,10 @@ def long_func(num):
 
 
 if __name__ == '__main__':
+    start = time.time()
     for i in range(10):
         print(long_func(i))
+    print(time.time() - start)
 
     start = time.time()
     for i in range(10):
