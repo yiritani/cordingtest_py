@@ -2,13 +2,15 @@ from typing import List
 
 class Solution:
     def sumOfUnique(self, nums: List[int]) -> int:
-        sum = 0
-        tmp = nums[0]
+        result, duplicate = [], []
         nums.sort()
-        for i,v in enumerate(nums):
+        for i in range(len(nums)-1):
             if nums[i] == nums[i+1]:
-                nums.pop(i)
-
+                duplicate.append(nums[i])
+        for i in nums:
+            if i not in duplicate:
+                result.append(i)
+        return sum(result)
 
 
 

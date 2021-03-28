@@ -1,31 +1,13 @@
+def order(nums):
+    for out_index, out_value in enumerate(nums):
+        if nums[out_index] % 2 != 0:
+            for j in range(out_index, len(nums)):
+                if nums[j] % 2 == 0:
+                    nums[out_index], nums[j] = nums[j], nums[out_index]
+                    break
+
+        print(nums)
 
 
-def snake(str, depth):
-    start = depth // 2
-    insert_list = [[] for i in range(depth)]
-    insert_index = {i for i in range(depth)}
-
-    pos = lambda i : i + 1
-    neg = lambda i : i - 1
-    ope = neg
-
-    for i in str:
-        insert_list[start].append(i)
-        for rest in insert_index - {start}:
-            insert_list[rest].append(' ')
-
-        if start <= 0:
-            ope = pos
-        elif start >= depth-1:
-            ope = neg
-
-        start = ope(start)
-
-    return insert_list
-
-
-
-import string
-sss = [j for i in range(5) for j in string.ascii_uppercase]
-for i in snake(sss, 8):
-    print(''.join(i))
+nnn = [0, 1, 3, 4, 2, 4, 5, 1, 6, 9, 8]
+order(nnn)
