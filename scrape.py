@@ -40,7 +40,7 @@ def generateCsv(csvList: List[Tuple[str]]):
 
 
 if __name__ == '__main__':
-    fileName = '/Users/iriyayuusuke/Desktop/csv.csv'
+    fileName = '/Users/user/Desktop/csv.csv'
     with open(fileName, 'w') as f:
         writer = csv.writer(f)
         writer.writerow(['商品名', '現在値段', '残り時間', 'リンクURL'])

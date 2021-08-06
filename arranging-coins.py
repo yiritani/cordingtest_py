@@ -10,3 +10,6 @@ class Solution:
 s = Solution()
 n = 8
 print(s.arrangeCoins(n))
+
+
+# https://leetcode.com/problems/arranging-coins/

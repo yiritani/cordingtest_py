@@ -14,3 +14,6 @@ if __name__ == '__main__':
     s = Solution()
     nums = [6,2,6,5,1,2]
     s.arrayPairSum(nums)
+
+
+# https://leetcode.com/problems/array-partition-i/

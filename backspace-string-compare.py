@@ -32,3 +32,7 @@ S = "y#fo##f"
 T = "y#f#o##f"
 s = Solution()
 print(s.backspaceCompare(S,T))
+
+
+
+# https://leetcode.com/problems/backspace-string-compare/
