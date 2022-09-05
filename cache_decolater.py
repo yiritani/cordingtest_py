@@ -1,14 +1,12 @@
 from functools import lru_cache
 import time
 
-@lru_cache()
-def long_func(num):
-    r = 0
-    for i in range(10000000):
-        r += num * i
-    return r
 
-
+def long_func(i):
+    s = None
+    for j in range(1000000):
+        s += j * i
+    print(s)
 
 
 if __name__ == '__main__':

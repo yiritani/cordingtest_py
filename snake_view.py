@@ -1,51 +1,53 @@
-from typing import List
+import string
 
 
-def snake_v1(chars):
-    result = [[], [], []]
-    insert_index = {0, 1, 2}
-    index = 1
+def snake_v1(l):
+	parent_snake = [[], [], []]
+	escape_sequence = {0, 1, 2}
+	now_cnt = 1
+	neg = lambda x: x - 1
+	pos = lambda x: x + 1
+	cal_func = neg
 
-    for c, v in enumerate(chars):
-        if c % 4 == 1:
-            index = 0
-        elif c % 2 == 0:
-            index = 1
-        elif c % 4 == 3:
-            index = 2
+	for i in l:
+		parent_snake[now_cnt].append(i)
+		for escape in escape_sequence - {now_cnt}:
+			parent_snake[escape].append(' ')
+		if 2 <= now_cnt:
+			cal_func = neg
+		elif now_cnt <= 0:
+			cal_func = pos
+		now_cnt = cal_func(now_cnt)
 
-        result[index].append(v)
-        for i in insert_index - {index}:
-            result[i].append(' ')
-
-    return result
-
-
-def snake_v2(char, depth):
-    result = [[] for i in range(depth)]
-    insert_index = {i for i in range(depth)}
-    insert_depth = depth // 2
-
-    pos = lambda insert_num: insert_num + 1
-    neg = lambda insert_num: insert_num - 1
-    ope = neg
-
-    for i in char:
-        result[insert_depth].append(i)
-        for j in insert_index - {insert_depth}:
-            result[j].append(' ')
-        if insert_depth >= len(result) - 1:
-            ope = neg
-        if insert_depth <= 0:
-            ope = pos
-        insert_depth = ope(insert_depth)
-    return result
+	return parent_snake
 
 
-if __name__ == '__main__':
-    import string
+def snake_v2(l, height):
+	parent_snake = [[] for _ in range(height)]
+	escape_sequence = {i for i in range(height)}
+	now_cnt = height // 2
+	neg = lambda x: x - 1
+	pos = lambda x: x + 1
+	cal_func = neg
 
-    s = [j for i in range(3) for j in string.ascii_lowercase]
-    c = ''.join(s)
-    for i in snake_v2(c, 10):
-        print(''.join(i))
+	for i in l:
+		parent_snake[now_cnt].append(i)
+		for escape in escape_sequence - {now_cnt}:
+			parent_snake[escape].append(' ')
+		if height-1 <= now_cnt:
+			cal_func = neg
+		elif now_cnt <= 0:
+			cal_func = pos
+		now_cnt = cal_func(now_cnt)
+
+	return parent_snake
+
+
+l = []
+for i in range(10):
+	l.append(str(i))
+
+i = list(string.ascii_lowercase) * 5
+for s in snake_v2(i, 10):
+	# print(s)
+	print(''.join(s))
